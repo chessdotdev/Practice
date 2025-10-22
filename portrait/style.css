@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #000;
+}
+p{
+     font-size: 8px; 
+     line-height: 8px; 
+    text-align: justify;
+    background: url(joyuri.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-clip: text;
+    -webkit-text-fill-color: rgba(255, 255, 225,0);
+}   
