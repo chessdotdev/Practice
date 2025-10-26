@@ -1,4 +1,4 @@
-const apiKey = "81f33ea96f8e39648762b895804454c0";
+const apiKey = "API_KEY"; // api key
 const searchInput = document.querySelector('.search');
 const btn = document.querySelector('.submit');
 const output = document.querySelector('.city');
@@ -19,7 +19,7 @@ btn.addEventListener('click', () => {
             }
             return response.json();
         })
-        .then(data => {   
+        .then(data => {
             output.innerHTML = `
                 <div>
                     <h2 class="h4 fw-bold mb-2">${data.name}, ${data.sys.country}</h2>
@@ -28,10 +28,10 @@ btn.addEventListener('click', () => {
                     <p class="mb-1">💧 Humidity: ${data.main.humidity}%</p>
                     <p class="mb-0">📍 Lat: ${data.coord.lat}, Lon: ${data.coord.lon}</p>
                 </div>
-            `;   
+            `;
         })
         .catch(error => {
             console.error("❌ Error fetching weather data:", error);
             output.textContent = "City not found.";
         });
-});XMLDocument
+});
