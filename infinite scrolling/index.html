@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Infinite Scroll Example</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .post {
+      border-bottom: 1px solid #ddd;
+      padding: 20px;
+    }
+    #loader {
+      text-align: center;
+      padding: 20px;
+      font-size: 18px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <div id="loader">Loading...</div>
+
+  <script>
+    const container = document.getElementById("container");
+    const loader = document.getElementById("loader");
+
+    let page = 1;
+    let loading = false;
+
+    // Fetch data function
+    async function fetchPosts() {
+      loading = true;
+      loader.style.display = "block";
+
+      // Example API (you can replace with your own endpoint)
+      const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=10&_page=${page}`);
+      const data = await res.json();
+
+      // Simulate network delay for demo
+      await new Promise(r => setTimeout(r, 500));
+
+      data.forEach(post => {
+        const div = document.createElement("div");
+        div.className = "post";
+        div.innerHTML = `<h3>${post.title}</h3><p>${post.body}</p>`;
+        container.appendChild(div);
+      });
+
+      loader.style.display = "none";
+      loading = false;
+      page++;
+    }
+
+    // Check scroll position
+    function handleScroll() {
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      if (!loading && scrollTop + clientHeight >= scrollHeight - 10) {
+        fetchPosts();
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Initial load
+    fetchPosts();
+  </script>
+</body>
+</html>

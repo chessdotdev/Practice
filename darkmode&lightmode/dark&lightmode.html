@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    :root{
+  /* COLORS */
+  --color: #9176FF;
+  --dark-color: #2b2b2b;
+  --dark-icon-color: #fff;
+  --light-color: #f7f7f7;
+  --light-icon-color: #FFDE59;
+}
+    body{
+        color: black;
+        background-color: var(--light-color);
+        text-align: center;
+
+    }
+    
+    button{
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 20px;
+        border: none;
+        background-color: gray;
+        text-align: center;
+    }
+    .dark{
+        background-color: var(--dark-color);
+        color: white;
+    }
+</style>
+<body>
+
+           <h1>DARK MODE AND LIGHT MODE</h1>
+        <button class="btn" onclick="switchMode();">Dark mode</button>
+        
+  
+        
+        <script>
+            let buttonElement = document.querySelector(".btn");
+              function switchMode(){
+                 buttonElement = document.body;
+                   buttonElement.classList.toggle("dark");
+              
+              }
+              let i = 1;
+              while(i <= 5){
+                 console.log(i);
+                 i++;
+              }
+
+        </script>
+</body>
+</html>

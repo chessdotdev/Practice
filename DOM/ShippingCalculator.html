@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping</title>
+</head>
+<body>
+
+      <p>Orders under 40 pesos = +10 pesos shipping.</p>
+      <p>Orders over 40 pesos = FREE shipping.</p>
+      <input class="cost" type="text" placeholder="Cost of order" onkeydown="
+         keyEnter(event);
+      ">
+      <button onclick="
+       calculate();
+      ">Calculate</button>
+      <p class="totalCost"></p>
+    <script>
+         function keyEnter(event){
+         //console.log(event.key);
+         if(event.key === 'Enter'){
+        calculate();
+      }
+         }
+       
+         function calculate(){
+            const inputElement = document.querySelector('.cost');
+            let cost = Number(inputElement.value);
+      
+            if(cost <  40){
+                cost = cost + 10;
+            }
+            document.querySelector('.totalCost').innerHTML = `Total cost: Php ${cost}`;
+         }
+         
+       
+    </script>
+</body>
+</html>

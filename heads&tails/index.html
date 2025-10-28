@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heads & Tails</title>
+</head>
+<style>
+        p {
+        font-size: 24px;
+    }
+
+    button {
+        padding: 10px 15px;
+        background-color: grey;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: rgb(81, 241, 81);
+    }
+</style>
+<body>
+    
+         <p>Heads & Tails</p>
+
+         <button onclick="
+           playGame();
+         ">Heads</button>
+         <button onclick="
+           playGame();
+         ">Tails</button>
+         <button onclick="
+            score.wins = 0;
+            score.losses = 0;
+            localStorage.removeItem('score');
+         ">Reset</button>
+           
+           <p id="scores">Wins: </p>
+
+    <script>
+    
+        let score =  JSON.parse(localStorage.getItem('score'));
+        JSON.parse(localStorage.getItem('score'));
+
+         if(!score){
+            score = {
+               wins:  0,
+               losses: 0
+            }
+         }
+        
+         function playGame(playerMove){
+
+             const Guess = Math.random();
+              let result ='';
+              if (Guess < 0.5) {
+                result = 'heads';
+                score.wins +=1;
+            } else {
+                result = 'tails';
+                score.losses+=1;
+            }
+             //alert(`Wins: ${score.wins} Losses: ${score.losses}`);
+            console.log(result);
+            console.log(localStorage.setItem('score', JSON.stringify(score)));
+            let scoress = document.getElementById('scores');
+            scoress.innerHTML =`Wins: ${score.wins} Lose: ${score.losses}`;
+        
+         };
+         
+
+    </script>
+</body>
+</html>
